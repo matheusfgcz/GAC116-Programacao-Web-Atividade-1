@@ -175,6 +175,7 @@ function aoClicarCelula(evento) {
     }, 700);
 }
 
+
 celulas.forEach((celula) => celula.addEventListener('click', aoClicarCelula));
 buttonReiniciar.addEventListener('click', prepararJogo);
 
