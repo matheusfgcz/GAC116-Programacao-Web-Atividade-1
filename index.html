@@ -3,41 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atividade 1 GAC116</title>
+    <title>Jogo da Memória</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Jogo da Memoria</h1>
-    
-    <p class="regras">Cada carta contém um número em potencia de 2 que representa um valor em bits. Voce deve clicar em duas cartas e memorizar suas posicoes, ate encontrar todos os pares iguais.</p>
-    <div id="status">Pares encontrados: 0 de 8</div>
-    <div id="tentativas">Tentativas: 0</div>
-    <div id="tabuleiro" class="tabuleiro">
-        <div class="celula" data-index="0"></div>
-        <div class="celula" data-index="1"></div>
-        <div class="celula" data-index="2"></div>
-        <div class="celula" data-index="3"></div>
-        <div class="celula" data-index="4"></div>
-        <div class="celula" data-index="5"></div>
-        <div class="celula" data-index="6"></div>
-        <div class="celula" data-index="7"></div>
-        <div class="celula" data-index="8"></div>
-        <div class="celula" data-index="9"></div>
-        <div class="celula" data-index="10"></div>
-        <div class="celula" data-index="11"></div>
-        <div class="celula" data-index="12"></div>
-        <div class="celula" data-index="13"></div>
-        <div class="celula" data-index="14"></div>
-        <div class="celula" data-index="15"></div>
-    </div>
-    
-    <button id="buttonReiniciar">Reiniciar</button>
 
-    <div class="ultimas-tentativas">
-        <p class="ultimas-tentativas-titulo">Ultimas tentativas:</p>
-        <p class="linha-jogador">Jogador 1: <span id="valorJogador1">—</span></p>
-        <p class="linha-jogador">Jogador 2: <span id="valorJogador2">—</span></p>
-    </div>
+    <main class="game-container">
+        <header class="card-header">
+            <h1 class="game-title">Memória Bits</h1>
+            <p class="regras">Encontre as potências de 2 iguais, utilizando a menor quantidade de tentativas que puder!</p>
+        </header>
+
+        <section class="stats-panel">
+            <div class="stat-badge">
+                <span class="stat-label">Pares</span>
+                <span class="stat-value" id="status">0 / 8</span>
+            </div>
+            <div class="stat-badge">
+                <span class="stat-label">Tentativas</span>
+                <span class="stat-value" id="tentativas">0</span>
+            </div>
+            <div class="stat-badge">
+                <span class="stat-label">J1 vs J2</span>
+                <span class="stat-value stat-sub" id="ranking-resumo">
+                    <span id="valorJogador1">—</span> · <span id="valorJogador2">—</span>
+                </span>
+            </div>
+        </section>
+
+        <div id="tabuleiro" class="tabuleiro">
+            <button type="button" class="celula" data-index="0"></button>
+            <button type="button" class="celula" data-index="1"></button>
+            <button type="button" class="celula" data-index="2"></button>
+            <button type="button" class="celula" data-index="3"></button>
+            <button type="button" class="celula" data-index="4"></button>
+            <button type="button" class="celula" data-index="5"></button>
+            <button type="button" class="celula" data-index="6"></button>
+            <button type="button" class="celula" data-index="7"></button>
+            <button type="button" class="celula" data-index="8"></button>
+            <button type="button" class="celula" data-index="9"></button>
+            <button type="button" class="celula" data-index="10"></button>
+            <button type="button" class="celula" data-index="11"></button>
+            <button type="button" class="celula" data-index="12"></button>
+            <button type="button" class="celula" data-index="13"></button>
+            <button type="button" class="celula" data-index="14"></button>
+            <button type="button" class="celula" data-index="15"></button>
+        </div>
+
+        <div class="footer-actions">
+            <button id="buttonReiniciar" class="btn-primary">Reiniciar Partida</button>
+        </div>
+    </main>
 
     <script src="main.js"></script>
 </body>

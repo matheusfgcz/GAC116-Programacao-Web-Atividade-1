@@ -21,17 +21,13 @@ let proximoJogadorHistorico = 0;
 
 function carregarUltimasTentativas() {
     const salvo = localStorage.getItem(chaveUltimasTentativas);
-    if (!salvo) {
-        return;
-    }
+    if (!salvo) return;
     try {
         const dados = JSON.parse(salvo);
         if (typeof dados.j1 === 'number') ultimasTentativasJ1 = dados.j1;
         if (typeof dados.j2 === 'number') ultimasTentativasJ2 = dados.j2;
         if (dados.proximo === 0 || dados.proximo === 1) proximoJogadorHistorico = dados.proximo;
-    } catch {
-
-    }
+    } catch { }
 }
 
 function salvarUltimasTentativas() {
@@ -63,21 +59,19 @@ function registrarUltimaPartidaConcluida() {
 
 function embaralhar(lista) {
     const copia = [...lista];
-
     for (let i = copia.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [copia[i], copia[j]] = [copia[j], copia[i]];
     }
-
     return copia;
 }
 
 function atualizarStatus() {
-    elementoStatus.innerText = `Pares encontrados: ${paresEncontrados} de 8`;
+    elementoStatus.innerText = `${paresEncontrados} / 8`;
 }
 
 function atualizarTentativas() {
-    elementoTentativas.innerText = `Tentativas: ${tentativas}`;
+    elementoTentativas.innerText = String(tentativas);
 }
 
 function prepararJogo() {
@@ -97,7 +91,8 @@ function prepararJogo() {
     atualizarTentativas();
 
     celulas.forEach((celula, indice) => {
-        celula.innerText = cartas[indice].simbolo;
+        // Mostra a numeração de 1 a 16 como no jogo original da foto
+        celula.innerText = indice + 1;
         celula.classList.add('oculta');
         celula.classList.remove('revelada', 'encontrada');
     });
@@ -109,7 +104,9 @@ function revelarCarta(celula, carta) {
     celula.classList.add('revelada');
 }
 
-function ocultarCarta(celula) {
+function ocultarCarta(celula, indice) {
+    // Retorna para a numeração de 1 a 16 ao virar de volta
+    celula.innerText = indice + 1;
     celula.classList.remove('revelada');
     celula.classList.add('oculta');
 }
@@ -120,7 +117,7 @@ function marcarComoEncontrada(celula) {
 }
 
 function aoClicarCelula(evento) {
-    const celula = evento.target;
+    const celula = evento.currentTarget;
     const indice = parseInt(celula.getAttribute('data-index'), 10);
     const carta = cartas[indice];
 
@@ -153,8 +150,6 @@ function aoClicarCelula(evento) {
         atualizarStatus();
 
         if (paresEncontrados === simbolosBase.length) {
-            elementoStatus.innerText = 'Muito bem! Voce encontrou todos os pares.';
-            elementoTentativas.innerText = `Tentativas totais: ${tentativas}`;
             registrarUltimaPartidaConcluida();
         }
 
@@ -167,14 +162,13 @@ function aoClicarCelula(evento) {
     setTimeout(() => {
         carta1.revelada = false;
         carta2.revelada = false;
-        ocultarCarta(primeiraCarta.celula);
-        ocultarCarta(segundaCarta.celula);
+        ocultarCarta(primeiraCarta.celula, primeiraCarta.indice);
+        ocultarCarta(segundaCarta.celula, segundaCarta.indice);
         primeiraCarta = null;
         segundaCarta = null;
         bloqueado = false;
     }, 700);
 }
-
 
 celulas.forEach((celula) => celula.addEventListener('click', aoClicarCelula));
 buttonReiniciar.addEventListener('click', prepararJogo);
