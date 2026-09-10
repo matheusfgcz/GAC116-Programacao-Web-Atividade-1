@@ -91,7 +91,6 @@ function prepararJogo() {
     atualizarTentativas();
 
     celulas.forEach((celula, indice) => {
-        // Mostra a numeração de 1 a 16 como no jogo original da foto
         celula.innerText = indice + 1;
         celula.classList.add('oculta');
         celula.classList.remove('revelada', 'encontrada');
@@ -105,7 +104,6 @@ function revelarCarta(celula, carta) {
 }
 
 function ocultarCarta(celula, indice) {
-    // Retorna para a numeração de 1 a 16 ao virar de volta
     celula.innerText = indice + 1;
     celula.classList.remove('revelada');
     celula.classList.add('oculta');

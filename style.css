@@ -24,7 +24,6 @@ body {
     gap: 16px;
 }
 
-/* Cartão superior de título */
 .card-header {
     background-color: #fdfbf7;
     width: 100%;
@@ -50,7 +49,6 @@ body {
     line-height: 1.3;
 }
 
-/* Painel de Status (Estilo Level / Time / Streak) */
 .stats-panel {
     display: flex;
     width: 100%;
@@ -89,7 +87,6 @@ body {
     color: #d97706;
 }
 
-/* Tabuleiro 4x4 */
 .tabuleiro {
     width: 100%;
     aspect-ratio: 1 / 1;
@@ -102,7 +99,6 @@ body {
     box-shadow: 0 8px 18px rgba(32, 107, 163, 0.35), inset 0 3px 3px rgba(255, 255, 255, 0.3);
 }
 
-/* Cartas */
 .celula {
     border: none;
     outline: none;
@@ -130,7 +126,6 @@ body {
     box-shadow: 0 1px 0 #2874ad;
 }
 
-/* Carta Oculta: Azul celeste com raios e numeração 1 a 16 */
 .celula.oculta {
     background: radial-gradient(circle, #6ec6ff 20%, #4daef0 100%);
     color: #ffffff;
@@ -138,7 +133,6 @@ body {
     border: 2px solid #82d3ff;
 }
 
-/* Carta Revelada: branca com destaque verde igual à foto */
 .celula.revelada {
     background: #ffffff;
     color: #274059;
@@ -147,7 +141,6 @@ body {
     transform: scale(1.02);
 }
 
-/* Carta Encontrada (Par Finalizado) */
 .celula.encontrada {
     background: #eafaf1;
     color: #27ae60;
@@ -158,7 +151,6 @@ body {
     opacity: 0.92;
 }
 
-/* Botão de Reinício */
 .footer-actions {
     width: 100%;
 }
